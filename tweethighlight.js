@@ -30,6 +30,7 @@ function saveSelection() {
 // event handler that triggers saveSelection() and refreshes tweet button
 $(document).mouseup (function() {
     savedText = saveSelection();
+    var tweetText = '"' + savedText + '"';
     // deletes Twitter-created tweet button
     $('#tweetbutton iframe').remove();
     // generates new tweet button with customized properties
@@ -37,7 +38,7 @@ $(document).mouseup (function() {
         .addClass('twitter-share-button')
         .attr('href', 'http://twitter.com/share')
         .attr('data-url', $('document.url').text())
-        .attr('data-text', savedText);
+        .attr('data-text', tweetText);
     $('#tweetbutton').append(tweetbutton);
     // tells Twitter to refresh tweet button settings with customized properties
     twttr.widgets.load();
